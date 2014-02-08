@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Ember Starter Kit</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<script type="text/x-handlebars">
+    <div class="container">
+        <div class="main-menu">
+            <ul class="main-menu__list">
+                <li class="main-menu__item">
+                    {{#link-to 'index' class="main-menu__link"}}Home{{/link-to}}
+                </li>
+                <li class="main-menu__item">
+                    {{#link-to 'bag_constructor' class="main-menu__link"}}Bag constractor{{/link-to}}
+                </li>
+                <li class="main-menu__item">
+                    {{#link-to 'people' class="main-menu__link"}}People{{/link-to}}
+                </li>
+            </ul>
+        </div>
+        <main>
+            {{outlet}}
+        </main>
+    </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="index">
+  <p>Hello, this is bag site</p>
+</script>
+
+<script type="text/x-handlebars" data-template-name="bag_constructor">
+    <h1>Bag constractor</h1>
+    
+    <div class="bag">
+        <div class="bag__top">top</div>
+        <div class="bag__middle">middle></div>
+        <div class="bag__bottom">bottom</div>
+    </div>
+
+    <div class="controls">
+        <header class="controls__header">
+            <h2 class="controls__title">Controls</h2>
+        </header>
+        {{view Ember.Select 
+            contentBinding="controller.bag"
+            optionValuePath="content"
+            optionLabelPath="content.name"
+            class="input"
+        }}
+        {{!-- {{view Ember.Select 
+            contentBinding="App.handles" 
+            optionValuePath="content.id"
+            optionLabelPath="content.color"
+            valueBinding="App.currentHandle.id"
+            class="input"}} --}}
+        <p>{{bag.get.id}}</p>
+    </div>
+</script>
+
+<script type="text/x-handlebars" data-template-name="people">
+    <div class="bag">
+        <div {{bind-attr class=":bag__top App.selectedPersonControllerTop.person.color"}}>top</div>
+        <div {{bind-attr class=":bag__middle App.selectedPersonControllerMiddle.person.color"}}>middle</div>
+        <div {{bind-attr class=":bag__bottom App.selectedPersonControllerBottom.person.color"}}>bottom</div>
+    </div>
+
+    <div class="controls">
+        <header class="controls__header">
+            <h2 class="controls__title">Controls</h2>
+        </header>
+
+        {{view Ember.Select
+           contentBinding="App.peopleControllerTop"
+           selectionBinding="App.selectedPersonControllerTop.person"
+           optionLabelPath="content.fullName"
+           optionValuePath="content.id"
+           class="input"
+        }}
+
+        {{view Ember.Select
+           contentBinding="App.peopleControllerMiddle"
+           selectionBinding="App.selectedPersonControllerMiddle.person"
+           optionLabelPath="content.fullName"
+           optionValuePath="content.id"
+           class="input"
+        }}
+
+        {{view Ember.Select
+           contentBinding="App.peopleControllerBottom"
+           selectionBinding="App.selectedPersonControllerBottom.person"
+           optionLabelPath="content.fullName"
+           optionValuePath="content.id"
+           class="input"
+        }}
+    </div>
+
+       <p class="price">{{controller.totalPrice}}</p>
+</script>
+
+
+<script src="js/libs/jquery-1.10.2.js"></script>
+<script src="js/libs/handlebars-1.1.2.js"></script>
+<script src="js/libs/ember-1.3.1.js"></script>
+<script src="js/libs/ember-data-1.0.0-beta.js"></script>
+<script src="js/application.js"></script>
+</body>
+</html>

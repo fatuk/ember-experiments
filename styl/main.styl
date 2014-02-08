@@ -1,0 +1,78 @@
+@import 'nib'
+
+*
+    box-sizing border-box
+
+body
+    font-family Verdana
+
+a
+    color #555
+    text-decoration none
+
+*:focus
+    outline 0
+
+.container
+    width 100%
+    max-width 600px
+    margin 0 auto
+
+.main-menu
+    background #ddd
+    &__list
+        clearfix()
+        list-style none
+        padding 0
+        margin 0
+    &__item
+        float left
+    &__link
+        display inline-block
+        padding 10px
+        &.active
+            color #fff
+            background orange
+        &:hover
+            background #ccc
+
+.bag
+    width 70%
+    float left
+    &__top, &__middle, &__bottom
+        background #ccc
+        padding 20px
+        margin-bottom 10px
+
+.controls
+    width 27%
+    float right
+    &__title
+        margin 0
+        margin-bottom 10px
+
+.input
+    width 100%
+    margin-bottom 10px
+
+.price
+    width 27%
+    float right
+    font-size 2em
+    color red
+    margin 0
+
+.orange
+    background orange
+
+.green
+    background green
+
+.brown
+    background brown
+
+.blue
+    background blue
+
+.red
+    background red

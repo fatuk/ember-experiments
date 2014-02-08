@@ -1,0 +1,11 @@
+<h1>Pulls</h1>
+<div class="pulls">
+    <ul class="pulls__list">
+        {{#each pull in model}}
+        <li class="pulls__item">        
+          <p class="pulls__user">{{pull.user.login}}</p>
+          <h3 class="pulls__title">{{pull.title}}</h3>
+        </li>
+        {{/each}}
+    </ul>
+</div>
