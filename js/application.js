@@ -3,20 +3,27 @@ App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 
 App.IndexRoute = Ember.Route.extend({
-    setupController: function(controller, model) {
-        controller.set('model', model);
-    },
+    // setupController: function(controller, model) {
+    //     controller.set('model', model);
+    // },
     model: function() {
-        return this.store.find('bag');
-    },
+        return this.get('store').findAll('bag');
+    }
+    
+});
+
+App.IndexController = Ember.ArrayController.extend({
+    currentPrice: null,
     actions: {
         test: function() {
-            console.log('test');
+            this.get('model').set('color', 'green');
+            
+        },
+        onChange: function() {
+            console.log(this);
         }
     }
 });
-
-
 
 App.Bag = DS.Model.extend({
     name: DS.attr('string'),
@@ -40,3 +47,14 @@ App.Bag.FIXTURES = [{
     name: 'Shocky',
     price: 300
 }];
+
+// App.Bag.FIXTURES = [{
+//     id: 1,
+//     name: 'Omega',
+//     color: 'red',
+//     price: 100
+// }];
+
+// App.IndexController = Ember.ArrayController.extend({
+
+// });

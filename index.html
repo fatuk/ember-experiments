@@ -9,11 +9,23 @@
 </head>
 <body>
 
-<script type="text/x-handlebars">
-    {{#each bag in controller.model}}
-      <p>Color is: {{id}}</p>
-    {{/each}}
-      <p>{{controller.model.color}}</p>
+<script type="text/x-handlebars" data-template-name="index">
+
+    <p>{{model.color}}</p>
+
+    {{ view Ember.Select
+       optionValuePath = "content.price"
+       optionLabelPath = "content.color"
+       content = model
+       value = currentPrice
+       prompt="Выберите соискателя"
+    }}
+
+    <p>{{currentPrice}}</p>
+
+   {{!--  {{#each item in controller.model}}
+        <p>{{item.color}}</p>
+    {{/each}} --}}
     <div {{action "test"}}>test</div>
 </script>
 
