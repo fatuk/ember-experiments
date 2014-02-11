@@ -1,4 +1,4 @@
-grunt-scafold
-=============
+ember-experiments
+=================
 
-Setup for simple web app scaffolding
+For my Ember study
