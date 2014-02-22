@@ -18,22 +18,39 @@
 
 <script type="text/x-handlebars" data-template-name="index">
 
-    <p>{{model.color}}</p>
+    <p>controller.totalPrice: {{controller.totalPrice}}</p>
+    <p>model.totalPrice: {{model.totalPrice}}</p>
+    <p>model.material: {{model.material}}</p>
+
+    <hr>
+
+    <h1>current {{controller.currentMaterial.id}}</h1>
 
     {{ view Ember.Select
-       optionValuePath = "content.price"
-       optionLabelPath = "content.color"
-       content = model
-       value = currentPrice
-       prompt="Выберите соискателя"
+       content = material
+       optionValuePath = "content.id"    
+       optionLabelPath = "content.name"
+       value = defaultMaterial.id
+       selection = currentMaterial
+       prompt="Выберите материал"
+    }}
+    {{ view Ember.Select
+       content = color
+       optionValuePath = "content.id"    
+       optionLabelPath = "content.name"
+       value = 2
+       selection = currentColor
+       prompt="Выберите цвет"
+    }}
+    {{ view Ember.Select
+       content = bubo
+       optionValuePath = "content.id"    
+       optionLabelPath = "content.name"
+       value = 2
+       selection = currentBubo
+       prompt="Выберите Бубон"
     }}
 
-    <p>{{currentPrice}}</p>
-
-   {{!--  {{#each item in controller.model}}
-        <p>{{item.color}}</p>
-    {{/each}} --}}
-    <div {{action "test"}}>test</div>
 </script>
 
 
