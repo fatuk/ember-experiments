@@ -11,12 +11,15 @@
 
 <script type="text/x-handlebars" data-template-name="application">
     <h1>Main</h1>
-
+    <a href="#" {{action 'change'}}>Change</a>
     {{outlet}}
     
 </script>
 
 <script type="text/x-handlebars" data-template-name="index">
+
+
+<div id="drawing"></div>
 
     <p>controller.totalPrice: {{controller.totalPrice}}</p>
     <p>model.totalPrice: {{model.totalPrice}}</p>
@@ -55,9 +58,14 @@
 
 
 <script src="js/libs/jquery-1.10.2.js"></script>
+<script src="vendors/svg.min.js"></script>
+<script src="vendors/svg.parser.js"></script>
+<script src="vendors/svg.import.js"></script>
 <script src="js/libs/handlebars-1.1.2.js"></script>
 <script src="js/libs/ember-1.2.0.js"></script>
 <script src="js/libs/ember-data-1.0.0-beta.js"></script>
 <script src="js/application.js"></script>
+<script src="js/models/material.js"></script>
+<script src="js/svg.js"></script>
 </body>
 </html>

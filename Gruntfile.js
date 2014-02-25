@@ -29,6 +29,16 @@ module.exports = function(grunt) {
             }
         },
         //------------------------------------------------------------
+        concat: {
+            options: {
+              separator: ';',
+            },
+            dist: {
+              src: ['vendors/*.js'],
+              dest: 'js/vendors.js',
+            }
+        },
+        //------------------------------------------------------------
         connect: {
             server: {
                 options: {

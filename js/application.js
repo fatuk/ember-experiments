@@ -12,7 +12,16 @@ App.IndexRoute = Ember.Route.extend({
 
 });
 
+App.ApplicationController = Ember.Controller.extend({
+    actions: {
+        change: function() {
+            App.bagForm.fill('../assets/img/002.jpg');
+        }
+    }
+});
+
 App.IndexController = Ember.ObjectController.extend({
+    
     defaultMaterial: {
         id: 2
     },
