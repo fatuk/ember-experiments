@@ -3,76 +3,56 @@
 *
     box-sizing border-box
 
-body
-    font-family Verdana
-
-a
-    color #555
-    text-decoration none
-
-*:focus
-    outline 0
-
-.container
-    width 100%
-    max-width 600px
-    margin 0 auto
-
-.main-menu
-    background #ddd
-    &__list
-        clearfix()
-        list-style none
-        padding 0
-        margin 0
-    &__item
-        float left
-    &__link
-        display inline-block
-        padding 10px
-        &.active
-            color #fff
-            background orange
-        &:hover
-            background #ccc
-
-.bag
-    width 70%
-    float left
-    &__top, &__middle, &__bottom
-        background #ccc
-        padding 20px
-        margin-bottom 10px
-
-.controls
-    width 27%
-    float right
+.constructor
     &__title
-        margin 0
-        margin-bottom 10px
+        color #E44014
+        text-align center
+        font-size 45px
+        margin-top 10px
+        margin-bottom 30px
+    &__preview
+        clearfix()
+        border-top solid 1px #E8E8E8
+        border-bottom solid 1px #E8E8E8
+        text-align center
+    &__preview-title
+        font-size 28px
+        padding-top 35px
+        padding-bottom 20px
+    &__preview-front
+        width 50%
+        float left
+        height 380px
+    &__preview-back
+        width 50%
+        float right
+        height 380px
+    &__info
+        font-size 26px
+        text-align center
+        border-bottom solid 1px #E8E8E8
+        padding-bottom 30px
+        margin-bottom 30px
+    &__price
+        color #E44014
 
-.input
+.form
+    margin-top 20px
+    &__row
+        clearfix()
+        margin-bottom 22px
+    &__cell
+        float left
+        width (100% / 4)
+        padding-right 20px
+        &:last-of-type
+            padding-right 0
+
+.select
+    border solid 1px #7BB3C4
     width 100%
-    margin-bottom 10px
 
-.price
-    width 27%
-    float right
-    font-size 2em
-    color red
-    margin 0
-
-.orange
-    background orange
-
-.green
-    background green
-
-.brown
-    background brown
-
-.blue
-    background blue
-
-.red
-    background red
+.label
+    display inline-block
+    color #757575
+    margin-bottom 5px

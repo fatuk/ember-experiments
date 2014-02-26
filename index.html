@@ -1,71 +1,92 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
 <head>
-    <meta charset="utf-8">
-    <title>Ember Starter Kit</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <!-- <link rel="stylesheet" href="css/bootstrap.css"> -->
-    <link rel="stylesheet" href="css/main.css">
+    <meta charset="utf-8" />
+    <title>Dizzuka Accessories</title>
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/app.css">
 </head>
 <body>
-
-<script type="text/x-handlebars" data-template-name="application">
-    <h1>Main</h1>
-    <a href="#" {{action 'change'}}>Change</a>
-    {{outlet}}
+    <script type="text/x-handlebars" data-template-name="application">
+    <header class="header section">
+      <div class="section__in">
+          <a href="mailto:zakaz@dizzuka.ru" class="link contact pull-left">zakaz@dizzuka.ru</a>
+          <h1 class="logo"><img src="../images/logo.png" alt="Dizzuka Accessories" title="Dizzuka Accessories" /></h1>
+          <span class="contact pull-right">+7 (909) 409 32 96</span>
+      </div>
+    </header>
+    <section class="section section_main">
+    <div class="section__in">
+        <hgroup class="section__header">
+            <h1 class="section__title">Конструктор</h1>
+        </hgroup>
+    </div>
+    <!-- Constructor -->
     
-</script>
+        <h1>Main</h1>
+        <a href="#" {{action 'change'}}>Change</a>
+        {{outlet}}
 
-<script type="text/x-handlebars" data-template-name="index">
+    </section>
 
+    <footer class="footer">
+      <div class="section__in">
+          <span class="logo logo_bottom"><img src="../images/logo_small.png" alt="Dizzuka Accessories" title="Dizzuka Accessories" /></span>
+      </div>
+    </footer>
+    </script>
 
-<div id="drawing"></div>
+    <script type="text/x-handlebars" data-template-name="index">
+        <div id="drawing"></div>
 
-    <p>controller.totalPrice: {{controller.totalPrice}}</p>
-    <p>model.totalPrice: {{model.totalPrice}}</p>
-    <p>model.material: {{model.material}}</p>
+        <p>controller.totalPrice: {{controller.totalPrice}}</p>
+        <p>model.totalPrice: {{model.totalPrice}}</p>
+        <p>model.material: {{model.material}}</p>
 
-    <hr>
+        <hr>
 
-    <h1>current {{controller.currentMaterial.id}}</h1>
+        <h1>current {{controller.currentMaterial.id}}</h1>
 
-    {{ view Ember.Select
-       content = material
-       optionValuePath = "content.id"    
-       optionLabelPath = "content.name"
-       value = defaultMaterial.id
-       selection = currentMaterial
-       prompt="Выберите материал"
-    }}
-    {{ view Ember.Select
-       content = color
-       optionValuePath = "content.id"    
-       optionLabelPath = "content.name"
-       value = 2
-       selection = currentColor
-       prompt="Выберите цвет"
-    }}
-    {{ view Ember.Select
-       content = bubo
-       optionValuePath = "content.id"    
-       optionLabelPath = "content.name"
-       value = 2
-       selection = currentBubo
-       prompt="Выберите Бубон"
-    }}
+        {{ view Ember.Select
+             content = material
+             optionValuePath = "content.id"    
+             optionLabelPath = "content.name"
+             value = defaultMaterial.id
+             selection = currentMaterial
+             prompt="Выберите материал"
+        }}
+        {{ view Ember.Select
+             content = color
+             optionValuePath = "content.id"    
+             optionLabelPath = "content.name"
+             value = 2
+             selection = currentColor
+             prompt="Выберите цвет"
+        }}
+        {{ view Ember.Select
+             content = bubo
+             optionValuePath = "content.id"    
+             optionLabelPath = "content.name"
+             value = 2
+             selection = currentBubo
+             prompt="Выберите Бубон"
+        }}
+    </script>
 
-</script>
+<!-- Ember Application -->
+ <script src="js/libs/jquery-1.10.2.js"></script>
+ <script src="vendors/svg.min.js"></script>
+ <script src="vendors/svg.parser.js"></script>
+ <script src="vendors/svg.import.js"></script>
+ <script src="js/libs/handlebars-1.1.2.js"></script>
+ <script src="js/libs/ember-1.2.0.js"></script>
+ <script src="js/libs/ember-data-1.0.0-beta.js"></script>
+ <script src="js/application.js"></script>
+ <script src="js/models/material.js"></script>
+ <script src="js/svg.js"></script>
 
-
-<script src="js/libs/jquery-1.10.2.js"></script>
-<script src="vendors/svg.min.js"></script>
-<script src="vendors/svg.parser.js"></script>
-<script src="vendors/svg.import.js"></script>
-<script src="js/libs/handlebars-1.1.2.js"></script>
-<script src="js/libs/ember-1.2.0.js"></script>
-<script src="js/libs/ember-data-1.0.0-beta.js"></script>
-<script src="js/application.js"></script>
-<script src="js/models/material.js"></script>
-<script src="js/svg.js"></script>
 </body>
 </html>
