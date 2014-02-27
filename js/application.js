@@ -35,7 +35,10 @@ App.ApplicationController = Ember.ObjectController.extend({
                 parseInt(currentUpPocketMaterialPrice);
 
             var currentFrontMaterialUrl = this.currentFrontMaterial.img,
-                currentUpPocketMaterialUrl = this.currentUpPocketMaterial.img
+                currentUpPocketMaterialUrl = this.currentUpPocketMaterial.img;
+                console.log(currentFrontMaterialUrl);
+                console.log(currentUpPocketMaterialUrl);
+
             if(totalPrice){
                 model.set('totalPrice', totalPrice);
                 setTimeout(function() {
