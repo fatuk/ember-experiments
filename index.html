@@ -86,11 +86,14 @@
                         <div class="form__row">
                             <div class="form__cell">
                                 <label for="upPocketMaterial" class="label">Материал верхнего кармана</label>
-                                <select id="upPocketMaterial" class="select">
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                </select>
+                                {{ view Ember.Select
+                                     content = App.UpPocketMaterial
+                                     optionValuePath = "content.name"    
+                                     optionLabelPath = "content.name"
+                                     selectionBinding = currentUpPocketMaterial
+                                     value="Up Pocket Material 1"
+                                     class="select"
+                                }}
                             </div>
                             <div class="form__cell">
                                 <label for="upPocketForm" class="label">Форма верхнего кармана</label>

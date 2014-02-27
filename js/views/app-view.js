@@ -12,7 +12,7 @@ App.ApplicationView = Ember.View.extend({
 
 		$.get('../svg/upPocket1.txt', function(data) {
 			var svg = draw.svg(data);
-			App.upPocket1 = svg.get('SvgjsPath1009').
+			App.upPocket = svg.get('SvgjsPath1009').
 				fill('#ccc').
 				stroke({color: '#979797', width: 2}).
 				move(35, -10);

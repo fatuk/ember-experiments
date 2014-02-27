@@ -18,12 +18,12 @@ App.FrontMaterial = [
 
 App.UpPocketMaterial = [
     {
-        name: 'Front Material 1',
+        name: 'Up Pocket Material 1',
         img: 'assets/img/pockets_materials/001.jpg',
         price: 50
     },
     {
-        name: 'Front Material 2',
+        name: 'Up Pocket Material 2',
         img: 'assets/img/pockets_materials/002.jpg',
         price: 150
     }

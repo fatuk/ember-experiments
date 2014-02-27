@@ -18,71 +18,35 @@ App.ApplicationController = Ember.Controller.extend({
 
 App.ApplicationController = Ember.ObjectController.extend({
     currentFrontMaterial: null,
+    currentUpPocketMaterial: null,
     
-    currentMaterial: null,
-    currentColor: {
-        id: 1
-    },
-    currentBubo: {
-        id: 1
-    },
-    currentShipping: {
-        id: 1
-    },
-    material: [{
-        id: 1,
-        name: 'wool',
-        price: 100
-    }, {
-        id: 2,
-        name: 'acryl',
-        price: 200
-    }, {
-        id: 3,
-        name: 'fur',
-        price: 500
-    }],
-    color: [{
-        id: 1,
-        name: 'red',
-        price: 10
-    }, {
-        id: 2,
-        name: 'blue',
-        price: 20
-    }, {
-        id: 3,
-        name: 'white',
-        price: 5
-    }],
-    bubo: [{
-        id: 1,
-        name: 'false',
-        price: 50
-    }, {
-        id: 2,
-        name: 'true',
-        price: 100
-    }],
     totalPrice: function() {
         var currentFrontMaterialPrice = 0,
+            currentUpPocketMaterialPrice = 0,
             totalPrice = 0,
             model = this.get('model');
-        if(this.currentFrontMaterial){
+        if(this.currentFrontMaterial && this.currentUpPocketMaterial){
             currentFrontMaterialPrice = this.currentFrontMaterial.price;
+            currentUpPocketMaterialPrice = this.currentUpPocketMaterial.price;
 
-            totalPrice = parseInt(currentFrontMaterialPrice);
-            var url = this.currentFrontMaterial.img;
+
+            totalPrice = 
+                parseInt(currentFrontMaterialPrice) + 
+                parseInt(currentUpPocketMaterialPrice);
+
+            var currentFrontMaterialUrl = this.currentFrontMaterial.img,
+                currentUpPocketMaterialUrl = this.currentUpPocketMaterial.img
             if(totalPrice){
                 model.set('totalPrice', totalPrice);
                 setTimeout(function() {
-                    App.bagForm.fill(url);
+                    App.bagForm.fill(currentFrontMaterialUrl);
+                    App.upPocket.fill(currentUpPocketMaterialUrl);
                 }, 200);
             }
         }
 
         return totalPrice;
-    }.property('currentFrontMaterial')
+    }.property('currentFrontMaterial', 'currentUpPocketMaterial')
 });
 
 // App.IndexController.addObserver('currentMaterial', targetObject, targetAction)
