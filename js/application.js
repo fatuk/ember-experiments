@@ -2,14 +2,10 @@ window.App = Ember.Application.create();
 App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
 
-App.IndexRoute = Ember.Route.extend({
-    // setupController: function(controller, model) {
-    //     controller.set('model', model);
-    // },
+App.ApplicationRoute = Ember.Route.extend({
     model: function() {
         return this.get('store').find('bag', 1);
     }
-
 });
 
 App.ApplicationController = Ember.Controller.extend({
@@ -20,11 +16,9 @@ App.ApplicationController = Ember.Controller.extend({
     }
 });
 
-App.IndexController = Ember.ObjectController.extend({
+App.ApplicationController = Ember.ObjectController.extend({
+    currentFrontMaterial: null,
     
-    defaultMaterial: {
-        id: 2
-    },
     currentMaterial: null,
     currentColor: {
         id: 1
@@ -70,49 +64,38 @@ App.IndexController = Ember.ObjectController.extend({
         name: 'true',
         price: 100
     }],
-    actions: {
-        test: function() {
-            this.currentMaterial.set('id', 2);
-            // this.get('model').set('color', 'green');
-            console.log(this);
-
-        },
-        onChange: function() {
-            console.log(this);
-        }
-    },
     totalPrice: function() {
-        var currentMaterialPrice = 0,
-            currentColorPrice = 0,
-            currentBuboPrice = 0,
-            currentShippingPrice = 0,
+        var currentFrontMaterialPrice = 0,
             totalPrice = 0,
             model = this.get('model');
-        if(this.currentMaterial){
-            currentMaterialPrice = this.currentMaterial.price;
-        }
-        if(this.currentColor){
-            currentColorPrice = this.currentColor.price;
-        }
-        if(this.currentColor){
-            currentBuboPrice = this.currentBubo.price;
+        if(this.currentFrontMaterial){
+            currentFrontMaterialPrice = this.currentFrontMaterial.price;
+
+            totalPrice = parseInt(currentFrontMaterialPrice);
+            var url = this.currentFrontMaterial.img;
+            if(totalPrice){
+                model.set('totalPrice', totalPrice);
+                setTimeout(function() {
+                    App.bagForm.fill(url);
+                }, 200);
+            }
         }
 
-        totalPrice = parseInt(currentMaterialPrice) + parseInt(currentColorPrice) + parseInt(currentBuboPrice);
-        
-        if(totalPrice){
-            model.set('totalPrice', totalPrice);
-        }
-    }.property('currentMaterial', 'currentColor', 'currentBubo', 'currentShipping')
+        return totalPrice;
+    }.property('currentFrontMaterial')
 });
 
 // App.IndexController.addObserver('currentMaterial', targetObject, targetAction)
 
 App.Bag = DS.Model.extend({
-    material: DS.attr('string'),
-    color: DS.attr('string'),
-    bubo: DS.attr('boolean'),
-    shipping: DS.attr('boolean'),
+    frontMaterial: DS.attr('string'),
+    backMaterial: DS.attr('string'),
+    innerMaterial: DS.attr('string'),
+    handleMaterial: DS.attr('string'),
+    upPocketMaterial: DS.attr('string'),
+    upPocketForm: DS.attr('string'),
+    bottomPocketMaterial: DS.attr('string'),
+    bottomPocketForm: DS.attr('string'),
     totalPrice: DS.attr('number')
 });
 

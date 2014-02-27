@@ -11,32 +11,133 @@
 </head>
 <body>
     <script type="text/x-handlebars" data-template-name="application">
-    <header class="header section">
-      <div class="section__in">
-          <a href="mailto:zakaz@dizzuka.ru" class="link contact pull-left">zakaz@dizzuka.ru</a>
-          <h1 class="logo"><img src="../images/logo.png" alt="Dizzuka Accessories" title="Dizzuka Accessories" /></h1>
-          <span class="contact pull-right">+7 (909) 409 32 96</span>
-      </div>
-    </header>
-    <section class="section section_main">
-    <div class="section__in">
-        <hgroup class="section__header">
-            <h1 class="section__title">Конструктор</h1>
-        </hgroup>
-    </div>
-    <!-- Constructor -->
-    
-        <h1>Main</h1>
-        <a href="#" {{action 'change'}}>Change</a>
-        {{outlet}}
+        <header class="header section">
+            <div class="section__in">
+                <a href="mailto:zakaz@dizzuka.ru" class="link contact pull-left">zakaz@dizzuka.ru</a>
+                <h1 class="logo"><img src="../images/logo.png" alt="Dizzuka Accessories" title="Dizzuka Accessories" /></h1>
+                <span class="contact pull-right">+7 (909) 409 32 96</span>
+            </div>
+        </header>
+        <section class="section">
+            <div class="section__in">
+                <!-- Constructor -->
+                <div class="constructor">
+                    <!-- Header -->
+                    <header class="constructor__header">
+                        <h1 class="constructor__title">Конструктор</h1>
+                    </header>
+                    <!-- Preview area -->
+                    <div class="constructor__preview">
+                        <div class="constructor__preview-front">
+                            <header class="constructor__preview-header">
+                                <h2 class="constructor__preview-title">Передняя часть</h2>
+                            </header>
+                            <div class="constructor__preview-area" id="frontPreview"></div>
+                        </div>
+                        <div class="constructor__preview-back">
+                            <header class="constructor__preview-header">
+                                <h2 class="constructor__preview-title">Задняя часть</h2>
+                            </header>
+                            <div class="constructor__preview-area" id="backPreview"></div>
+                        </div>
+                    </div>
+                    {{!-- Controls  --}}
+                    <div class="form">
+                        {{!-- First row  --}}
+                        <div class="form__row">
+                            <div class="form__cell">
+                                <label for="frontMaterial" class="label">Материал переда</label>
+                                {{ view Ember.Select
+                                     content = App.FrontMaterial
+                                     optionValuePath = "content.name"    
+                                     optionLabelPath = "content.name"
+                                     selectionBinding=currentFrontMaterial
+                                     value="Front Material 1"
+                                     class="select"
+                                }}
+                            </div>
+                            <div class="form__cell">
+                                <label for="backMaterial" class="label">Материал зада</label>
+                                <select id="backMaterial" class="select">
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                            <div class="form__cell">
+                                <label for="innerMaterial" class="label">Материал внутренности</label>
+                                <select id="innerMaterial" class="select">
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                            <div class="form__cell">
+                                <label for="handleMaterial" class="label">Материал ручек</label>
+                                <select id="handleMaterial" class="select">
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                        </div>
 
-    </section>
+                        {{!-- Second row --}}
+                        <div class="form__row">
+                            <div class="form__cell">
+                                <label for="upPocketMaterial" class="label">Материал верхнего кармана</label>
+                                <select id="upPocketMaterial" class="select">
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                            <div class="form__cell">
+                                <label for="upPocketForm" class="label">Форма верхнего кармана</label>
+                                <select id="upPocketForm" class="select">
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                            <div class="form__cell">
+                                <label for="bottomPocketMaterial" class="label">Материал нижнего кармана</label>
+                                <select id="bottomPocketMaterial" class="select">
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                            <div class="form__cell">
+                                <label for="bottomPocketForm" class="label">Форма нижнего кармана</label>
+                                <select id="bottomPocketForm" class="select">
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                    <option value="1">1</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
 
-    <footer class="footer">
-      <div class="section__in">
-          <span class="logo logo_bottom"><img src="../images/logo_small.png" alt="Dizzuka Accessories" title="Dizzuka Accessories" /></span>
-      </div>
-    </footer>
+                    {{!-- Contructor info  --}}
+                    <p class="constructor__info">
+                        Стоимость Вашего рюкзака: <span class="constructor__price">{{controller.totalPrice}} руб.</span>
+                    </p>
+                </div>
+            </div>
+            
+            <div class="section__in">
+                <hgroup class="section__header">
+                    <h1 class="section__title">Оформление заказа</h1>
+                </hgroup>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="section__in">
+                <span class="logo logo_bottom"><img src="../images/logo_small.png" alt="Dizzuka Accessories" title="Dizzuka Accessories" /></span>
+            </div>
+        </footer>
     </script>
 
     <script type="text/x-handlebars" data-template-name="index">
@@ -87,6 +188,8 @@
  <script src="js/application.js"></script>
  <script src="js/models/material.js"></script>
  <script src="js/svg.js"></script>
+ <script src="js/bag-parts.js"></script>
+ <script src="js/views/app-view.js"></script>
 
 </body>
 </html>

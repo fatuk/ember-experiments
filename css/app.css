@@ -3,6 +3,10 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+svg {
+  overflow: scroll;
+  padding: 10px;
+}
 .constructor__title {
   color: #e44014;
   text-align: center;
@@ -32,12 +36,15 @@
 .constructor__preview-front {
   width: 50%;
   float: left;
-  height: 380px;
 }
 .constructor__preview-back {
   width: 50%;
   float: right;
-  height: 380px;
+}
+.constructor__preview-area {
+  margin: 0 auto;
+  width: 270px;
+  height: 360px;
 }
 .constructor__info {
   font-size: 26px;
