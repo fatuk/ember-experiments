@@ -13,7 +13,7 @@ module.exports = function(grunt) {
                     compress: false
                 },
                 files: {
-                    'css/main.css': 'styl/main.styl'
+                    'css/app.css': 'styl/main.styl'
                 }
             }
         },
@@ -26,6 +26,16 @@ module.exports = function(grunt) {
                 files: {
                     "templates/templates.js": "hbs/*.hbs"
                 }
+            }
+        },
+        //------------------------------------------------------------
+        concat: {
+            options: {
+              separator: ';',
+            },
+            dist: {
+              src: ['vendors/*.js'],
+              dest: 'js/vendors.js',
             }
         },
         //------------------------------------------------------------

@@ -1,176 +1,94 @@
 window.App = Ember.Application.create();
 App.ApplicationAdapter = DS.FixtureAdapter.extend();
 
-App.Router.map(function() {
-    this.resource('bag_constructor');
-    this.resource('people');
-});
 
-App.BagConstructorController = Ember.ArrayController.extend({
-    bag: function() {
-        return this.store.find('bag');
-    }.property()
-});
-
-App.BagConstructorRoute = Ember.Route.extend({
+App.ApplicationRoute = Ember.Route.extend({
     model: function() {
-        return this.store.find('bag');
+        return this.get('store').find('bag', 1);
     }
 });
 
+App.ApplicationController = Ember.Controller.extend({
+    actions: {
+        change: function() {
+            App.bagForm.fill('../assets/img/002.jpg');
+        }
+    }
+});
 
+App.ApplicationController = Ember.ObjectController.extend({
+    currentFrontMaterial: null,
+    currentUpPocketMaterial: null,
+    
+    totalPrice: function() {
+        var currentFrontMaterialPrice = 0,
+            currentUpPocketMaterialPrice = 0,
+            totalPrice = 0,
+            model = this.get('model');
+        if(this.currentFrontMaterial && this.currentUpPocketMaterial){
+            currentFrontMaterialPrice = this.currentFrontMaterial.price;
+            currentUpPocketMaterialPrice = this.currentUpPocketMaterial.price;
+
+
+            totalPrice = 
+                parseInt(currentFrontMaterialPrice) + 
+                parseInt(currentUpPocketMaterialPrice);
+
+            var currentFrontMaterialUrl = this.currentFrontMaterial.img,
+                currentUpPocketMaterialUrl = this.currentUpPocketMaterial.img
+            if(totalPrice){
+                model.set('totalPrice', totalPrice);
+                setTimeout(function() {
+                    App.bagForm.fill(currentFrontMaterialUrl);
+                    App.upPocket.fill(currentUpPocketMaterialUrl);
+                }, 200);
+            }
+        }
+
+        return totalPrice;
+    }.property('currentFrontMaterial', 'currentUpPocketMaterial')
+});
+
+// App.IndexController.addObserver('currentMaterial', targetObject, targetAction)
 
 App.Bag = DS.Model.extend({
-    name: DS.attr('string'),
-    color: DS.attr('string'),
-    price: DS.attr('number')
+    frontMaterial: DS.attr('string'),
+    backMaterial: DS.attr('string'),
+    innerMaterial: DS.attr('string'),
+    handleMaterial: DS.attr('string'),
+    upPocketMaterial: DS.attr('string'),
+    upPocketForm: DS.attr('string'),
+    bottomPocketMaterial: DS.attr('string'),
+    bottomPocketForm: DS.attr('string'),
+    totalPrice: DS.attr('number')
 });
+
+// App.Bag.FIXTURES = [{
+//     id: 1,
+//     name: 'Omega',
+//     color: 'red',
+//     price: 100
+// }, {
+//     id: 2,
+//     color: 'blue',
+//     name: 'Diggy',
+//     price: 200
+// }, {
+//     id: 3,
+//     color: 'green',
+//     name: 'Shocky',
+//     price: 300
+// }];
 
 App.Bag.FIXTURES = [{
     id: 1,
-    name: 'Omega',
-    color: 'red',
-    price: 100
-}, {
-    id: 2,
-    color: 'blue',
-    name: 'Diggy',
-    price: 200
-}, {
-    id: 3,
-    color: 'green',
-    name: 'Shocky',
-    price: 300
+    material: 'Choose material',
+    color: 'Choose color',
+    bubo: false,
+    shipping: false,
+    totalPrice: 0
 }];
 
-App.Person = Ember.Object.extend({
-    id: null,
-    firstName: null,
-    lastName: null,
+// App.IndexController = Ember.ArrayController.extend({
 
-    fullName: function() {
-        return this.get('firstName') + " " + this.get('lastName');
-    }.property('firstName', 'lastName').cacheable()
-});
-
-App.selectedPersonControllerTop = Ember.Object.create({
-    person: null
-});
-
-App.selectedPersonControllerMiddle = Ember.Object.create({
-    person: null
-});
-
-App.selectedPersonControllerBottom = Ember.Object.create({
-    person: null
-});
-
-App.peopleControllerTop = Ember.ArrayController.create({
-    content: [
-        App.Person.create({
-            id: 1,
-            firstName: 'Yehuda',
-            lastName: 'Katz',
-            color: 'green',
-            price: 100
-        }),
-        App.Person.create({
-            id: 2,
-            firstName: 'Tom',
-            lastName: 'Dale',
-            color: 'red',
-            price: 150
-        }),
-        App.Person.create({
-            id: 3,
-            firstName: 'Peter',
-            lastName: 'Wagenet',
-            color: 'orange',
-            price: 200
-        }),
-        App.Person.create({
-            id: 4,
-            firstName: 'Erik',
-            lastName: 'Bryn',
-            color: 'blue',
-            price: 250
-        })
-    ]
-});
-
-App.peopleControllerMiddle = Ember.ArrayController.create({
-    content: [
-        App.Person.create({
-            id: 1,
-            firstName: 'Yehuda',
-            lastName: 'Katz',
-            color: 'green',
-            price: 100
-        }),
-        App.Person.create({
-            id: 2,
-            firstName: 'Tom',
-            lastName: 'Dale',
-            color: 'red',
-            price: 150
-        }),
-        App.Person.create({
-            id: 3,
-            firstName: 'Peter',
-            lastName: 'Wagenet',
-            color: 'orange',
-            price: 200
-        }),
-        App.Person.create({
-            id: 4,
-            firstName: 'Erik',
-            lastName: 'Bryn',
-            color: 'blue',
-            price: 250
-        })
-    ]
-});
-
-App.peopleControllerBottom = Ember.ArrayController.create({
-    content: [
-        App.Person.create({
-            id: 1,
-            firstName: 'Yehuda',
-            lastName: 'Katz',
-            color: 'green',
-            price: 150
-        }),
-        App.Person.create({
-            id: 2,
-            firstName: 'Tom',
-            lastName: 'Dale',
-            color: 'red',
-            price: 200
-        }),
-        App.Person.create({
-            id: 3,
-            firstName: 'Peter',
-            lastName: 'Wagenet',
-            color: 'orange',
-            price: 1000
-        }),
-        App.Person.create({
-            id: 4,
-            firstName: 'Erik',
-            lastName: 'Bryn',
-            color: 'blue',
-            price: 1050
-        })
-    ]
-});
-
-App.selectedPersonControllerTop.set('person', App.peopleControllerTop.objectAt(3));
-App.selectedPersonControllerMiddle.set('person', App.peopleControllerMiddle.objectAt(1));
-App.selectedPersonControllerBottom.set('person', App.peopleControllerBottom.objectAt(0));
-
-App.PeopleRoute = Ember.Route.extend({
-    setupController: function(controller) {
-        var totalPrice = App.selectedPersonControllerTop.get('person.price');
-        controller.set('totalPrice', totalPrice);
-    }
-});
+// });
