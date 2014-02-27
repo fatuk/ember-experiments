@@ -44,7 +44,7 @@ App.ApplicationController = Ember.ObjectController.extend({
                 setTimeout(function() {
                     App.bagForm.fill(currentFrontMaterialUrl);
                     App.upPocket.fill(currentUpPocketMaterialUrl);
-                }, 200);
+                }, 500);
             }
         }
 
