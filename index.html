@@ -51,34 +51,43 @@
                                      content = App.FrontMaterial
                                      optionValuePath = "content.name"    
                                      optionLabelPath = "content.name"
-                                     selectionBinding=currentFrontMaterial
+                                     selectionBinding = App.currentFrontMaterial
                                      value="Front Material 1"
                                      class="select"
                                 }}
                             </div>
                             <div class="form__cell">
                                 <label for="backMaterial" class="label">Материал зада</label>
-                                <select id="backMaterial" class="select">
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                </select>
+                                {{ view Ember.Select
+                                     content = App.BackMaterial
+                                     optionValuePath = "content.name"    
+                                     optionLabelPath = "content.name"
+                                     selectionBinding = App.currentBackMaterial
+                                     value="Back Material 1"
+                                     class="select"
+                                }}
                             </div>
                             <div class="form__cell">
                                 <label for="innerMaterial" class="label">Материал внутренности</label>
-                                <select id="innerMaterial" class="select">
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                </select>
+                                {{ view Ember.Select
+                                     content = App.InnerMaterial
+                                     optionValuePath = "content.name"    
+                                     optionLabelPath = "content.name"
+                                     selectionBinding = App.currentInnerMaterial
+                                     value="Inner Material 1"
+                                     class="select"
+                                }}
                             </div>
                             <div class="form__cell">
                                 <label for="handleMaterial" class="label">Материал ручек</label>
-                                <select id="handleMaterial" class="select">
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                </select>
+                                {{ view Ember.Select
+                                     content = App.HandleMaterial
+                                     optionValuePath = "content.name"    
+                                     optionLabelPath = "content.name"
+                                     selectionBinding = App.currentHandleMaterial
+                                     value="Handle Material 1"
+                                     class="select"
+                                }}
                             </div>
                         </div>
 
@@ -90,34 +99,43 @@
                                      content = App.UpPocketMaterial
                                      optionValuePath = "content.name"    
                                      optionLabelPath = "content.name"
-                                     selectionBinding = currentUpPocketMaterial
+                                     selectionBinding = App.currentUpPocketMaterial
                                      value="Up Pocket Material 1"
                                      class="select"
                                 }}
                             </div>
                             <div class="form__cell">
                                 <label for="upPocketForm" class="label">Форма верхнего кармана</label>
-                                <select id="upPocketForm" class="select">
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                </select>
+                                {{ view Ember.Select
+                                     content = App.UpPocketForm
+                                     optionValuePath = "content.name"    
+                                     optionLabelPath = "content.name"
+                                     selectionBinding = App.currentUpPocketForm
+                                     value="Up Pocket Form 1"
+                                     class="select"
+                                }}
                             </div>
                             <div class="form__cell">
                                 <label for="bottomPocketMaterial" class="label">Материал нижнего кармана</label>
-                                <select id="bottomPocketMaterial" class="select">
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                </select>
+                                {{ view Ember.Select
+                                     content = App.BottomPocketMaterial
+                                     optionValuePath = "content.name"    
+                                     optionLabelPath = "content.name"
+                                     selectionBinding = App.currentBottomPocketMaterial
+                                     value="Bottom Pocket Material 1"
+                                     class="select"
+                                }}
                             </div>
                             <div class="form__cell">
                                 <label for="bottomPocketForm" class="label">Форма нижнего кармана</label>
-                                <select id="bottomPocketForm" class="select">
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                    <option value="1">1</option>
-                                </select>
+                                {{ view Ember.Select
+                                     content = App.BottomPocketForm
+                                     optionValuePath = "content.name"    
+                                     optionLabelPath = "content.name"
+                                     selectionBinding = App.currentBottomPocketForm
+                                     value="Bottom Pocket Form 1"
+                                     class="select"
+                                }}
                             </div>
                         </div>
                     </div>
