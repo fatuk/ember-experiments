@@ -8,14 +8,6 @@ App.ApplicationRoute = Ember.Route.extend({
     }
 });
 
-App.ApplicationController = Ember.Controller.extend({
-    actions: {
-        change: function() {
-            App.bagForm.fill('../assets/img/002.jpg');
-        }
-    }
-});
-
 App.currentFrontMaterial = null;
 App.currentUpPocketMaterial = null;
 App.currentBackMaterial = null;
@@ -49,7 +41,7 @@ App.ApplicationController = Ember.ObjectController.extend({
                 App.Front.fill(App.currentFrontMaterial.img);
             }
             if (App.isBackReady) {
-                App.Back.fill(App.currentFrontMaterial.img);
+                App.Back.fill(App.currentBackMaterial.img);
             }
             if (App.isUpFrontPocketReady) {
                 App.UpFrontPocket.fill(App.currentUpPocketMaterial.img);
@@ -109,23 +101,6 @@ App.Bag = DS.Model.extend({
     totalPrice: DS.attr('number')
 });
 
-// App.Bag.FIXTURES = [{
-//     id: 1,
-//     name: 'Omega',
-//     color: 'red',
-//     price: 100
-// }, {
-//     id: 2,
-//     color: 'blue',
-//     name: 'Diggy',
-//     price: 200
-// }, {
-//     id: 3,
-//     color: 'green',
-//     name: 'Shocky',
-//     price: 300
-// }];
-
 App.Bag.FIXTURES = [{
     id: 1,
     material: 'Choose material',
@@ -134,7 +109,3 @@ App.Bag.FIXTURES = [{
     shipping: false,
     totalPrice: 0
 }];
-
-// App.IndexController = Ember.ArrayController.extend({
-
-// });
