@@ -19,12 +19,20 @@ App.ApplicationController = Ember.Controller.extend({
 App.currentFrontMaterial = null;
 App.currentUpPocketMaterial = null;
 App.currentBackMaterial = null;
-
 App.currentInnerMaterial = null;
 App.currentHandleMaterial = null;
-App.currentFormUpPocketMaterial = null;
+App.currentUpPocketForm = null;
 App.currentBottomPocketMaterial = null;
 App.currentBottomPocketForm = null;
+
+App.isFrontReady, 
+App.isBackReady, 
+App.isUpFrontPocketReady, 
+App.isLeftHandleFrontReady, 
+App.isRightHandleFrontReady, 
+App.isBottomFrontPocketReady, 
+App.isLeftHandleBackReady, 
+App.isRightHandleBackReady = false;
 
 App.ApplicationController = Ember.ObjectController.extend({
     
@@ -33,31 +41,58 @@ App.ApplicationController = Ember.ObjectController.extend({
         var previewReady = 
             App.currentFrontMaterial &&
             App.currentUpPocketMaterial &&
-            App.currentBackMaterial &&
-            App.currentInnerMaterial &&
             App.currentHandleMaterial &&
-            App.currentFormUpPocketMaterial &&
-            App.currentBottomPocketMaterial &&
-            App.currentBottomPocketForm &&
-            App.bagForm &&
-            App.upPocket;
+            App.currentBottomPocketMaterial;
 
-            
+
+            if (App.isFrontReady) {
+                App.Front.fill(App.currentFrontMaterial.img);
+            }
+            if (App.isBackReady) {
+                App.Back.fill(App.currentFrontMaterial.img);
+            }
+            if (App.isUpFrontPocketReady) {
+                App.UpFrontPocket.fill(App.currentUpPocketMaterial.img);
+            }
+            if (App.isLeftHandleFrontReady) {
+                App.LeftHandleFront.fill(App.currentHandleMaterial.img);
+            }
+            if (App.isRightHandleFrontReady) {
+                App.RightHandleFront.fill(App.currentHandleMaterial.img);
+            }
+            if (App.isBottomFrontPocketReady) {
+                App.BottomFrontPocket.fill(App.currentBottomPocketMaterial.img);
+            }
+            if (App.isLeftHandleBackReady) {
+                App.LeftHandleBack.fill(App.currentHandleMaterial.img);
+            }
+            if (App.isRightHandleBackReady) {
+                App.RightHandleBack.fill(App.currentHandleMaterial.img);
+            }
+
             if(previewReady){
                 totalPrice = 
                 App.currentFrontMaterial.price +
-                App.currentUpPocketMaterial.price;
-
-                App.bagForm.fill(App.currentFrontMaterial.img);
-                App.upPocket.fill(App.currentUpPocketMaterial.img);
+                App.currentUpPocketMaterial.price +
+                App.currentBackMaterial.price +
+                App.currentInnerMaterial.price +
+                App.currentHandleMaterial.price +
+                App.currentUpPocketForm.price +
+                App.currentBottomPocketMaterial.price +
+                App.currentBottomPocketForm.price;
             }
 
-
-
-
-
         return totalPrice;
-    }.property('App.currentFrontMaterial', 'App.currentUpPocketMaterial')
+    }.property(
+        'App.currentFrontMaterial', 
+        'App.currentUpPocketMaterial',
+        'App.currentBackMaterial',
+        'App.currentInnerMaterial',
+        'App.currentHandleMaterial',
+        'App.currentUpPocketForm',
+        'App.currentBottomPocketMaterial',
+        'App.currentBottomPocketForm'
+        )
 });
 
 // App.IndexController.addObserver('currentMaterial', targetObject, targetAction)

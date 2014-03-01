@@ -6,10 +6,13 @@ App.ApplicationView = Ember.View.extend({
             drawBack = SVG('backPreview'),
             view = this;
 
+
         // Front
         $.get('svg/form.txt', function(data) {
             var svg = drawFront.svg(data),
                 materialUrl = App.currentFrontMaterial.img;
+
+                App.isFrontReady = true;
 
             App.Front = 
                 svg.roots()[0]._children[0].
@@ -22,6 +25,8 @@ App.ApplicationView = Ember.View.extend({
             var svg = drawBack.svg(data),
                 materialUrl = App.currentBackMaterial.img;
 
+                App.isBackReady = true;
+
             App.Back = 
                 svg.roots()[0]._children[0].
                 fill(materialUrl).
@@ -33,7 +38,9 @@ App.ApplicationView = Ember.View.extend({
             var svg = drawFront.svg(data),
                 materialUrl = App.currentUpPocketMaterial.img;
 
-            App.UpPocket = 
+                App.isUpFrontPocketReady = true;
+
+            App.UpFrontPocket = 
                 svg.roots()[0]._children[0].
                 fill(materialUrl).
                 stroke({color: '#979797', width: 2}).
@@ -44,6 +51,8 @@ App.ApplicationView = Ember.View.extend({
         $.get('svg/leftHandleFront.txt', function(data) {
             var svg = drawFront.svg(data),
                 materialUrl = App.currentHandleMaterial.img;
+
+                App.isLeftHandleFrontReady = true;
 
             App.LeftHandleFront = 
                 svg.roots()[0]._children[0].
@@ -57,6 +66,8 @@ App.ApplicationView = Ember.View.extend({
             var svg = drawFront.svg(data),
                 materialUrl = App.currentHandleMaterial.img;
 
+                App.isRightHandleFrontReady = true;
+
             App.RightHandleFront = 
                 svg.roots()[0]._children[0].
                 fill(materialUrl).
@@ -67,9 +78,11 @@ App.ApplicationView = Ember.View.extend({
         // Botton pocket
         $.get('svg/bottomPocket3.txt', function(data) {
             var svg = drawFront.svg(data),
-                materialUrl = App.currentHandleMaterial.img;
+                materialUrl = App.currentBottomPocketMaterial.img;
 
-            App.BottomPocket = 
+                App.isBottomFrontPocketReady = true;
+
+            App.BottomFrontPocket = 
                 svg.roots()[0]._children[0].
                 fill(materialUrl).
                 stroke({color: '#979797', width: 2}).
@@ -80,6 +93,8 @@ App.ApplicationView = Ember.View.extend({
         $.get('svg/leftHandleBack.txt', function(data) {
             var svg = drawBack.svg(data),
                 materialUrl = App.currentHandleMaterial.img;
+
+                App.isLeftHandleBackReady = true;
 
             App.LeftHandleBack = 
                 svg.roots()[0]._children[0].
@@ -92,6 +107,8 @@ App.ApplicationView = Ember.View.extend({
         $.get('svg/rightHandleBack.txt', function(data) {
             var svg = drawBack.svg(data),
                 materialUrl = App.currentHandleMaterial.img;
+
+                App.isRightHandleBackReady = true;
 
             App.RightHandleBack = 
                 svg.roots()[0]._children[0].
