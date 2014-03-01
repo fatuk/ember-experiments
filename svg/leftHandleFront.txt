@@ -2,9 +2,9 @@
 <!-- Generator: Adobe Illustrator 13.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 14948)  -->
 <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="490px" height="360px" viewBox="0 0 267.403 333.561" enable-background="new 0 0 267.403 333.561"
+	 width="80.819px" height="243.957px" viewBox="0 0 80.819 243.957" enable-background="new 0 0 80.819 243.957"
 	 xml:space="preserve">
-<pattern  x="13.21" y="241.835" width="69" height="69" patternUnits="userSpaceOnUse" id="Polka_Dot_Pattern" viewBox="2.125 -70.896 69 69" overflow="visible">
+<pattern  x="-81.001" y="196.402" width="69" height="69" patternUnits="userSpaceOnUse" id="Polka_Dot_Pattern" viewBox="2.125 -70.896 69 69" overflow="visible">
 	<g>
 		<polygon fill="none" points="71.125,-1.896 2.125,-1.896 2.125,-70.896 71.125,-70.896 		"/>
 		<polygon fill="#F7BC60" points="71.125,-1.896 2.125,-1.896 2.125,-70.896 71.125,-70.896 		"/>
@@ -943,7 +943,9 @@
 		</g>
 	</g>
 </pattern>
-<path fill-rule="evenodd" clip-rule="evenodd" fill="#E7E8E9" stroke="#000000" stroke-width="0.216" stroke-miterlimit="22.9256" d="
-	M57.296,0.108h152.811c31.453,0,57.188,25.573,57.188,56.83v219.685c0,31.256-25.734,56.83-57.188,56.83H57.296
-	c-31.454,0-57.188-25.574-57.188-56.83V56.938C0.108,25.681,25.842,0.108,57.296,0.108L57.296,0.108z"/>
+<path fill="#E7E8E9" stroke="#000000" stroke-width="0.216" stroke-miterlimit="22.9256" d="M80.711,243.834
+	c-19.055-2.422-34.479-8.354-46.575-16.958c-18.955-13.481-29.477-33.108-32.848-55.887c-3.198-21.616,0.2-46.106,9.019-70.661
+	C22.968,65.072,46.961,29.4,78.646,2.023l2.065-1.787v30.816c-22.442,22.789-39.489,50.008-49.145,76.895
+	c-7.567,21.069-10.524,41.797-7.866,59.765c2.486,16.804,10.035,31.13,23.546,40.739c8.577,6.1,19.65,10.461,33.465,12.568V243.834
+	L80.711,243.834z"/>
 </svg>

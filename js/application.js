@@ -19,6 +19,7 @@ App.ApplicationController = Ember.Controller.extend({
 App.currentFrontMaterial = null;
 App.currentUpPocketMaterial = null;
 App.currentBackMaterial = null;
+
 App.currentInnerMaterial = null;
 App.currentHandleMaterial = null;
 App.currentFormUpPocketMaterial = null;
@@ -32,8 +33,15 @@ App.ApplicationController = Ember.ObjectController.extend({
         var previewReady = 
             App.currentFrontMaterial &&
             App.currentUpPocketMaterial &&
+            App.currentBackMaterial &&
+            App.currentInnerMaterial &&
+            App.currentHandleMaterial &&
+            App.currentFormUpPocketMaterial &&
+            App.currentBottomPocketMaterial &&
+            App.currentBottomPocketForm &&
             App.bagForm &&
             App.upPocket;
+
             
             if(previewReady){
                 totalPrice = 
