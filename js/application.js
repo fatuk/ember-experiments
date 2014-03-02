@@ -19,10 +19,13 @@ App.currentBottomPocketForm = null;
 
 App.isFrontReady, 
 App.isBackReady, 
-App.isUpFrontPocketReady, 
+App.isUpFrontPocket1Ready, 
+App.isUpFrontPocket2Ready, 
 App.isLeftHandleFrontReady, 
 App.isRightHandleFrontReady, 
-App.isBottomFrontPocketReady, 
+App.isBottomFrontPocket1Ready, 
+App.isBottomFrontPocket2Ready, 
+App.isBottomFrontPocket3Ready, 
 App.isLeftHandleBackReady, 
 App.isRightHandleBackReady = false;
 
@@ -34,6 +37,7 @@ App.ApplicationController = Ember.ObjectController.extend({
             App.currentFrontMaterial &&
             App.currentUpPocketMaterial &&
             App.currentHandleMaterial &&
+            App.currentUpPocketForm &&
             App.currentBottomPocketMaterial;
 
 
@@ -43,8 +47,16 @@ App.ApplicationController = Ember.ObjectController.extend({
             if (App.isBackReady) {
                 App.Back.fill(App.currentBackMaterial.img);
             }
-            if (App.isUpFrontPocketReady) {
-                App.UpFrontPocket.fill(App.currentUpPocketMaterial.img);
+            if (App.isUpFrontPocket1Ready && App.isUpFrontPocket2Ready) {
+                if(App.currentUpPocketForm.form == '1') {
+                    App.UpFrontPocket1.show();
+                    App.UpFrontPocket2.hide();
+                } else {
+                    App.UpFrontPocket2.show();
+                    App.UpFrontPocket1.hide();
+                }
+                App.UpFrontPocket1.fill(App.currentUpPocketMaterial.img);
+                App.UpFrontPocket2.fill(App.currentUpPocketMaterial.img);
             }
             if (App.isLeftHandleFrontReady) {
                 App.LeftHandleFront.fill(App.currentHandleMaterial.img);
@@ -52,8 +64,25 @@ App.ApplicationController = Ember.ObjectController.extend({
             if (App.isRightHandleFrontReady) {
                 App.RightHandleFront.fill(App.currentHandleMaterial.img);
             }
-            if (App.isBottomFrontPocketReady) {
-                App.BottomFrontPocket.fill(App.currentBottomPocketMaterial.img);
+            if (App.isBottomFrontPocket1Ready && App.isBottomFrontPocket2Ready && App.isBottomFrontPocket3Ready) {
+                if(App.currentBottomPocketForm.form == '1') {
+                    App.BottomFrontPocket1.show();
+                    App.BottomFrontPocket2.hide();
+                    App.BottomFrontPocket3.hide();
+                }
+                if(App.currentBottomPocketForm.form == '2') {
+                    App.BottomFrontPocket1.hide();
+                    App.BottomFrontPocket2.show();
+                    App.BottomFrontPocket3.hide();
+                }
+                if(App.currentBottomPocketForm.form == '3') {
+                    App.BottomFrontPocket1.hide();
+                    App.BottomFrontPocket2.hide();
+                    App.BottomFrontPocket3.show();
+                }
+                App.BottomFrontPocket1.fill(App.currentBottomPocketMaterial.img);
+                App.BottomFrontPocket2.fill(App.currentBottomPocketMaterial.img);
+                App.BottomFrontPocket3.fill(App.currentBottomPocketMaterial.img);
             }
             if (App.isLeftHandleBackReady) {
                 App.LeftHandleBack.fill(App.currentHandleMaterial.img);

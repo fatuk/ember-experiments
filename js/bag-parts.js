@@ -88,12 +88,14 @@ App.UpPocketMaterial = [
 App.UpPocketForm = [
     {
         name: 'Up Pocket Form 1',
-        img: 'assets/img/pockets_materials/001.jpg',
+        img: '',
+        form: '1',
         price: 50
     },
     {
         name: 'Up Pocket Form 2',
-        img: 'assets/img/pockets_materials/002.jpg',
+        img: '',
+        form: '2',
         price: 150
     }
 ];
@@ -114,12 +116,20 @@ App.BottomPocketMaterial = [
 App.BottomPocketForm = [
     {
         name: 'Bottom Pocket Form 1',
-        img: 'assets/img/pockets_materials/001.jpg',
-        price: 50
+        img: '',
+        price: 50,
+        form: '1'
     },
     {
         name: 'Bottom Pocket Form 2',
-        img: 'assets/img/pockets_materials/002.jpg',
-        price: 150
+        img: '',
+        price: 150,
+        form: '2'
+    },
+    {
+        name: 'Bottom Pocket Form 3',
+        img: '',
+        price: 150,
+        form: '3'
     }
 ];

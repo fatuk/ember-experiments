@@ -1,11 +1,8 @@
 App.ApplicationView = Ember.View.extend({
-    bagForm: null,
-    test: 123,
     didInsertElement: function() {
         var drawFront = SVG('frontPreview'),
             drawBack = SVG('backPreview'),
             view = this;
-
 
         // Front
         $.get('svg/form.txt', function(data) {
@@ -33,18 +30,33 @@ App.ApplicationView = Ember.View.extend({
                 stroke({color: '#979797', width: 2});
         });
 
-        // Up pocket
+
+        // Up pocket 1
         $.get('svg/upFrontPocket1.txt', function(data) {
             var svg = drawFront.svg(data),
                 materialUrl = App.currentUpPocketMaterial.img;
 
-                App.isUpFrontPocketReady = true;
+                App.isUpFrontPocket1Ready = true;
 
-            App.UpFrontPocket = 
+            App.UpFrontPocket1 = 
                 svg.roots()[0]._children[0].
                 fill(materialUrl).
                 stroke({color: '#979797', width: 2}).
                 move(145, -10);
+        });
+        // Up pocket 2
+        $.get('svg/upFrontPocket2.txt', function(data) {
+            var svg = drawFront.svg(data),
+                materialUrl = App.currentUpPocketMaterial.img;
+
+                App.isUpFrontPocket2Ready = true;
+
+            App.UpFrontPocket2 = 
+                svg.roots()[0]._children[0].
+                fill(materialUrl).
+                stroke({color: '#979797', width: 2}).
+                move(145, -10).
+                hide();
         });
 
         // Left front pocket
@@ -75,18 +87,48 @@ App.ApplicationView = Ember.View.extend({
                 move(390, 60);
         });
 
-        // Botton pocket
+        // Botton pocket 1
+        $.get('svg/bottomPocket1.txt', function(data) {
+            var svg = drawFront.svg(data),
+                materialUrl = App.currentBottomPocketMaterial.img;
+
+                App.isBottomFrontPocket1Ready = true;
+
+            App.BottomFrontPocket1 = 
+                svg.roots()[0]._children[0].
+                fill(materialUrl).
+                stroke({color: '#979797', width: 2}).
+                move(135, 255);
+        });
+
+        // Botton pocket 2
+        $.get('svg/bottomPocket2.txt', function(data) {
+            var svg = drawFront.svg(data),
+                materialUrl = App.currentBottomPocketMaterial.img;
+
+                App.isBottomFrontPocket2Ready = true;
+
+            App.BottomFrontPocket2 = 
+                svg.roots()[0]._children[0].
+                fill(materialUrl).
+                stroke({color: '#979797', width: 2}).
+                move(175, 255).
+                hide();
+        });
+
+        // Botton pocket 3
         $.get('svg/bottomPocket3.txt', function(data) {
             var svg = drawFront.svg(data),
                 materialUrl = App.currentBottomPocketMaterial.img;
 
-                App.isBottomFrontPocketReady = true;
+                App.isBottomFrontPocket3Ready = true;
 
-            App.BottomFrontPocket = 
+            App.BottomFrontPocket3 = 
                 svg.roots()[0]._children[0].
                 fill(materialUrl).
                 stroke({color: '#979797', width: 2}).
-                move(175, 255);
+                move(175, 255).
+                hide();
         });
 
         // Left back pocket
